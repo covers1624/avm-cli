@@ -164,7 +164,9 @@ int main(int argc, char **argv) {
         close(fd);
         return 1;
     }
-    fprintf(stderr, "Found card: %s (%s)\n", caps.card, caps.bus_info);
+    if (config.status) {
+        fprintf(stderr, "Found card: %s (%s)\n", caps.card, caps.bus_info);
+    }
 
     if (strstr((const char *) &caps.card, "AVerMedia USB") == NULL) {
         fprintf(stderr, "Device is not an AVerMedia capture device.\n");
